@@ -1,13 +1,15 @@
-// Google Design - Material Design 3 交互脚本
+// Google Design - Material Design 3 深度优化版交互脚本
 
 document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initTabs();
+    initFilterChips();
     initTable();
     initQuickActions();
     initForm();
     initAnimations();
     initSnackbar();
+    initThemeToggle();
 });
 
 // 导航功能
@@ -27,31 +29,41 @@ function initNavigation() {
     if (menuBtn && navDrawer) {
         menuBtn.addEventListener('click', function() {
             navDrawer.classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('expanded');
         });
     }
 }
 
 // 分段按钮切换
 function initTabs() {
-    const segmentedBtns = document.querySelectorAll('.md-segmented-btn');
+    const segmentedBtns = document.querySelectorAll('.segmented-button');
     segmentedBtns.forEach(group => {
-        const btns = group.querySelectorAll('.segment-btn');
+        const btns = group.querySelectorAll('.segment');
         btns.forEach(btn => {
             btn.addEventListener('click', function() {
                 btns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                
-                // 重新动画图表
                 animateChartBars();
             });
         });
     });
 }
 
+// 筛选芯片
+function initFilterChips() {
+    const filterChips = document.querySelectorAll('.filter-chip');
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const filterName = this.textContent;
+            showSnackbar(`筛选: ${filterName}`);
+        });
+    });
+}
+
 // 表格功能
 function initTable() {
-    // 全选复选框
-    const selectAll = document.querySelector('thead .md-checkbox input');
+    const selectAll = document.getElementById('select-all');
     const rowCheckboxes = document.querySelectorAll('tbody .md-checkbox input');
     
     if (selectAll) {
@@ -66,14 +78,24 @@ function initTable() {
     rowCheckboxes.forEach(cb => {
         cb.addEventListener('change', function() {
             updateRowHighlight(this.closest('tr'));
-            
-            // 更新全选状态
             const allChecked = Array.from(rowCheckboxes).every(c => c.checked);
             const someChecked = Array.from(rowCheckboxes).some(c => c.checked);
             if (selectAll) {
                 selectAll.checked = allChecked;
                 selectAll.indeterminate = someChecked && !allChecked;
             }
+        });
+    });
+
+    // 操作按钮
+    const actionBtns = document.querySelectorAll('.action-btns .icon-btn-small');
+    actionBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const row = this.closest('tr');
+            const orderId = row.querySelector('.order-id').textContent;
+            const action = this.title;
+            showSnackbar(`${action}: ${orderId}`);
         });
     });
 
@@ -87,23 +109,11 @@ function initTable() {
             }
         });
     });
-
-    // 操作按钮
-    const actionBtns = document.querySelectorAll('.action-buttons .icon-btn-small');
-    actionBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const row = this.closest('tr');
-            const orderId = row.querySelector('.order-id').textContent;
-            const action = this.title;
-            showSnackbar(`${action}订单: ${orderId}`);
-        });
-    });
 }
 
 function updateRowHighlight(row) {
     const checkbox = row.querySelector('input[type="checkbox"]');
-    if (checkbox.checked) {
+    if (checkbox && checkbox.checked) {
         row.style.background = 'var(--md-primary-container)';
     } else {
         row.style.background = '';
@@ -112,13 +122,11 @@ function updateRowHighlight(row) {
 
 // 快捷操作
 function initQuickActions() {
-    const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+    const quickActionBtns = document.querySelectorAll('.quick-action-item');
     quickActionBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            const action = this.querySelector('.label-medium').textContent;
+            const action = this.querySelector('.action-label').textContent;
             showSnackbar(`执行操作: ${action}`);
-            
-            // 点击动画
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = '';
@@ -130,8 +138,7 @@ function initQuickActions() {
     const fabBtns = document.querySelectorAll('.md-fab');
     fabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            const icon = this.querySelector('.material-icons').textContent;
-            showSnackbar(`点击了FAB: ${icon}`);
+            showSnackbar('新建订单');
         });
     });
 }
@@ -142,7 +149,7 @@ function initForm() {
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            showSnackbar('表单已保存！', true);
+            showSnackbar('设置已保存！', 'success');
         });
     }
 
@@ -161,14 +168,13 @@ function initForm() {
     radios.forEach(radio => {
         radio.addEventListener('change', function() {
             const label = this.closest('.md-radio').querySelector('.radio-label').textContent;
-            showSnackbar(`选择了: ${label}`);
+            showSnackbar(`主题已切换为: ${label}`);
         });
     });
 }
 
 // 动画初始化
 function initAnimations() {
-    // 统计卡片入场
     const statCards = document.querySelectorAll('.stat-card');
     statCards.forEach((card, index) => {
         card.style.opacity = '0';
@@ -180,10 +186,8 @@ function initAnimations() {
         }, index * 100);
     });
 
-    // 图表柱状图动画
     animateChartBars();
 
-    // 团队成员动画
     const teamMembers = document.querySelectorAll('.team-member');
     teamMembers.forEach((member, index) => {
         member.style.opacity = '0';
@@ -218,14 +222,23 @@ function initSnackbar() {
     }
 }
 
-function showSnackbar(message, isSuccess = false) {
+function showSnackbar(message, type = 'info') {
     const snackbar = document.getElementById('snackbar');
     const textEl = snackbar.querySelector('.snackbar-text');
+    const iconEl = snackbar.querySelector('.snackbar-icon');
     
     textEl.textContent = message;
+    
+    const icons = {
+        info: 'info',
+        success: 'check_circle',
+        warning: 'warning',
+        error: 'error'
+    };
+    iconEl.textContent = icons[type] || icons.info;
+    
     snackbar.classList.add('show');
     
-    // 3秒后自动隐藏
     clearTimeout(window.snackbarTimeout);
     window.snackbarTimeout = setTimeout(() => {
         hideSnackbar();
@@ -237,11 +250,24 @@ function hideSnackbar() {
     snackbar.classList.remove('show');
 }
 
+// 主题切换
+function initThemeToggle() {
+    const themeBtn = document.querySelector('.theme-toggle');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            const icon = this.querySelector('.material-symbols-outlined');
+            icon.textContent = document.body.classList.contains('dark-theme') ? 'light_mode' : 'dark_mode';
+            showSnackbar('主题已切换');
+        });
+    }
+}
+
 // 通知按钮
-const notificationBtn = document.querySelector('.top-app-bar-right .icon-btn');
+const notificationBtn = document.querySelector('.notification-btn');
 if (notificationBtn) {
     notificationBtn.addEventListener('click', function() {
-        showSnackbar('你有3条未读消息');
+        showSnackbar('你有5条未读消息', 'warning');
     });
 }
 
@@ -254,11 +280,32 @@ teamMembers.forEach(member => {
     });
 });
 
-// 按钮点击反馈
+// 搜索框快捷键
+document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        document.querySelector('.search-bar input').focus();
+    }
+});
+
+// 搜索框功能
+const searchInput = document.querySelector('.search-bar input');
+if (searchInput) {
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const query = this.value.trim();
+            if (query) {
+                showSnackbar(`搜索: ${query}`);
+                this.value = '';
+            }
+        }
+    });
+}
+
+// 按钮涟漪效果
 const mdBtns = document.querySelectorAll('.md-btn:not(:disabled)');
 mdBtns.forEach(btn => {
     btn.addEventListener('click', function(e) {
-        // 创建涟漪效果
         const ripple = document.createElement('span');
         ripple.style.cssText = `
             position: absolute;
@@ -291,6 +338,17 @@ style.textContent = `
             transform: scale(4);
             opacity: 0;
         }
+    }
+    
+    .dark-theme {
+        --md-surface: #1C1B1F;
+        --md-surface-container: #211F26;
+        --md-surface-container-high: #2B2930;
+        --md-surface-container-highest: #36343B;
+        --md-on-surface: #E6E1E5;
+        --md-on-surface-variant: #CAC4D0;
+        --md-outline: #938F99;
+        --md-outline-variant: #49454F;
     }
 `;
 document.head.appendChild(style);
