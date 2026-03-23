@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vivo OriginOS DemoUI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">V</div>
+                <span class="logo-text">OriginOS</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span>首页</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>数据</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span>用户</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>设置</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">J</div>
+                    <div class="user-details">
+                        <span class="user-name">John</span>
+                        <span class="user-role">管理员</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 顶部导航 -->
+            <header class="top-nav">
+                <div class="page-title">仪表盘</div>
+                <div class="nav-actions">
+                    <button class="icon-btn">🔍</button>
+                    <button class="icon-btn notification">🔔<span class="badge">3</span></button>
+                </div>
+            </header>
+
+            <!-- 华容网格布局 -->
+            <section class="huarong-grid">
+                <!-- 大卡片 -->
+                <div class="grid-item large">
+                    <div class="card stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <span class="stat-label">总收入</span>
+                            <span class="stat-value">¥128,450</span>
+                            <span class="stat-change positive">+12.5%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 中卡片 -->
+                <div class="grid-item medium">
+                    <div class="card stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <span class="stat-label">活跃用户</span>
+                            <span class="stat-value">24,521</span>
+                            <span class="stat-change positive">+8.2%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 小卡片 -->
+                <div class="grid-item small">
+                    <div class="card stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <span class="stat-label">订单</span>
+                            <span class="stat-value">1,845</span>
+                            <span class="stat-change negative">-2.4%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-item small">
+                    <div class="card stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <span class="stat-label">满意度</span>
+                            <span class="stat-value">94.2%</span>
+                            <span class="stat-change positive">+1.8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快捷功能 -->
+                <div class="grid-item wide">
+                    <div class="card quick-actions">
+                        <h3 class="card-title">快捷功能</h3>
+                        <div class="action-grid">
+                            <button class="action-btn">
+                                <span class="action-icon">➕</span>
+                                <span>新建</span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">📤</span>
+                                <span>导出</span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">📊</span>
+                                <span>报表</span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">🔄</span>
+                                <span>同步</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="grid-item tall">
+                    <div class="card recent-activity">
+                        <h3 class="card-title">最近活动</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">📝</div>
+                                <div class="activity-content">
+                                    <span class="activity-title">新建项目</span>
+                                    <span class="activity-time">5分钟前</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">✅</div>
+                                <div class="activity-content">
+                                    <span class="activity-title">完成审批</span>
+                                    <span class="activity-time">10分钟前</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">💬</div>
+                                <div class="activity-content">
+                                    <span class="activity-title">收到消息</span>
+                                    <span class="activity-time">15分钟前</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 团队成员 -->
+                <div class="grid-item medium">
+                    <div class="card team-card">
+                        <h3 class="card-title">团队成员</h3>
+                        <div class="team-list">
+                            <div class="team-member">
+                                <div class="member-avatar">A</div>
+                                <span class="member-name">Alice</span>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">B</div>
+                                <span class="member-name">Bob</span>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">C</div>
+                                <span class="member-name">Carol</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 设置 -->
+                <div class="grid-item small">
+                    <div class="card settings-card">
+                        <h3 class="card-title">设置</h3>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <span>通知</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <span>深色</span>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 按钮展示 -->
+            <section class="button-showcase">
+                <h3>按钮样式</h3>
+                <div class="button-grid">
+                    <button class="btn btn-primary">主要</button>
+                    <button class="btn btn-secondary">次要</button>
+                    <button class="btn btn-text">文字</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸿蒙 HarmonyOS - 深度优化版</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="12" fill="url(#hm-gradient)"/>
+                            <path d="M9 14L12 17L19 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="hm-gradient" x1="0" y1="0" x2="28" y2="28">
+                                    <stop stop-color="#007AFF"/>
+                                    <stop offset="1" stop-color="#5856D6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">HarmonyOS</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <div class="nav-icon-wrap">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <rect x="2" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="12" y="2" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="2" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="12" y="12" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <span>首页</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon-wrap">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M3 17V11M7 17V7M11 17V13M15 17V9M19 17V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span>数据</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon-wrap">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <circle cx="11" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M4 20C4 16.6863 7.13401 14 11 14C14.866 14 18 16.6863 18 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <span>用户</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon-wrap">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M18 11H4M4 11L7 8M4 11L7 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4 6H18M18 6L15 3M18 6L15 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 10)"/>
+                        </svg>
+                    </div>
+                    <span>设置</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-card">
+                    <div class="user-avatar">
+                        <span>J</span>
+                        <span class="online-dot"></span>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">John</span>
+                        <span class="user-role">管理员</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 顶部栏 -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1 class="page-title">仪表盘</h1>
+                    <span class="page-subtitle">欢迎回来，John</span>
+                </div>
+                <div class="top-bar-right">
+                    <div class="search-container">
+                        <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <input type="text" placeholder="搜索..." class="search-input">
+                    </div>
+                    <button class="icon-button notification-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2C7.23858 2 5 4.23858 5 7V11L3 14H17L15 11V7C15 4.23858 12.7614 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 14V15C8 16.1046 8.89543 17 10 17C11.1046 17 12 16.1046 12 15V14" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 统计卡片 -->
+            <section class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-card-inner">
+                        <div class="stat-icon income">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2V22M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-value">¥128,450</span>
+                            <span class="stat-label">总收入</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>+12.5%</span>
+                        </div>
+                    </div>
+                    <div class="stat-sparkline">
+                        <svg width="100%" height="32" viewBox="0 0 120 32" preserveAspectRatio="none">
+                            <path d="M0 24 Q15 20, 30 22 T60 18 T90 14 T120 8" stroke="url(#spark-income)" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="spark-income" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#007AFF"/>
+                                    <stop offset="100%" stop-color="#5856D6"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-inner">
+                        <div class="stat-icon users">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M3 21V19C3 16.7909 4.79086 15 7 15H11C13.2091 15 15 16.7909 15 19V21" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="17" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M18 21V19C18 17.3431 16.8807 16 15.5 16" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-value">24,521</span>
+                            <span class="stat-label">活跃用户</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>+8.2%</span>
+                        </div>
+                    </div>
+                    <div class="stat-sparkline">
+                        <svg width="100%" height="32" viewBox="0 0 120 32" preserveAspectRatio="none">
+                            <path d="M0 20 Q20 18, 40 16 T80 12 T120 10" stroke="url(#spark-users)" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="spark-users" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#34C759"/>
+                                    <stop offset="100%" stop-color="#30D158"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-inner">
+                        <div class="stat-icon orders">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M3 9H21" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M9 3V9" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-value">1,845</span>
+                            <span class="stat-label">订单数量</span>
+                        </div>
+                        <div class="stat-trend down">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M7 3V11M7 11L3 7M7 11L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>-2.4%</span>
+                        </div>
+                    </div>
+                    <div class="stat-sparkline">
+                        <svg width="100%" height="32" viewBox="0 0 120 32" preserveAspectRatio="none">
+                            <path d="M0 12 Q25 14, 50 18 T100 22 T120 24" stroke="url(#spark-orders)" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="spark-orders" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#FF9500"/>
+                                    <stop offset="100%" stop-color="#FF6B00"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-inner">
+                        <div class="stat-icon satisfaction">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <circle cx="9" cy="10" r="1" fill="currentColor"/>
+                                <circle cx="15" cy="10" r="1" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-value">94.2%</span>
+                            <span class="stat-label">满意度</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M7 11V3M7 3L3 7M7 3L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>+1.8%</span>
+                        </div>
+                    </div>
+                    <div class="stat-progress">
+                        <div class="progress-circle">
+                            <svg width="48" height="48" viewBox="0 0 48 48">
+                                <circle cx="24" cy="24" r="20" stroke="rgba(0,0,0,0.06)" stroke-width="4" fill="none"/>
+                                <circle cx="24" cy="24" r="20" stroke="url(#progress-satisfaction)" stroke-width="4" fill="none" 
+                                    stroke-dasharray="125.6" stroke-dashoffset="10" stroke-linecap="round" transform="rotate(-90 24 24)"/>
+                                <defs>
+                                    <linearGradient id="progress-satisfaction" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#34C759"/>
+                                        <stop offset="100%" stop-color="#30D158"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <span class="progress-value">94%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 主要内容区 -->
+            <section class="content-area">
+                <!-- 快捷操作 -->
+                <div class="card quick-actions-card">
+                    <div class="card-header">
+                        <h3>快捷功能</h3>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <span>新建</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M7 10L12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>导出</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 17H15M9 13H15M9 9H12M5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <span>报表</span>
+                        </button>
+                        <button class="quick-action">
+                            <div class="action-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4V10H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M20 20V14H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4.58 19.41C5.36 20.19 6.39 20.75 7.54 20.95C8.69 21.15 9.88 20.98 10.93 20.46C11.98 19.94 12.83 19.1 13.37 18.07C13.91 17.04 14.11 15.87 13.94 14.73C13.77 13.59 13.25 12.54 12.45 11.73C11.65 10.92 10.61 10.38 9.48 10.18C8.34 9.98 7.17 10.14 6.13 10.63C5.09 11.12 4.23 11.92 3.68 12.92" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M19.42 4.59C18.64 3.81 17.61 3.25 16.46 3.05C15.31 2.85 14.12 3.02 13.07 3.54C12.02 4.06 11.17 4.9 10.63 5.93C10.09 6.96 9.89 8.13 10.06 9.27C10.23 10.41 10.75 11.46 11.55 12.27C12.35 13.08 13.39 13.62 14.52 13.82C15.66 14.02 16.83 13.86 17.87 13.37C18.91 12.88 19.77 12.08 20.32 11.08" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <span>同步</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="card activity-card">
+                    <div class="card-header">
+                        <h3>最近活动</h3>
+                        <button class="view-all-btn">查看全部</button>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon create">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <span class="activity-title">新建项目「移动端改版」</span>
+                                <span class="activity-meta">5分钟前 · Alice Chen</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon approve">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 8L6 11L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <span class="activity-title">审批通过「Q3预算申请」</span>
+                                <span class="activity-meta">10分钟前 · Bob Wang</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon message">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 4L8 8L14 4V12L8 16L2 12V4Z" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <span class="activity-title">收到来自Carol的消息</span>
+                                <span class="activity-meta">15分钟前 · Carol Li</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon update">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 8H14M14 8L10 4M14 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="activity-content">
+                                <span class="activity-title">更新了「设计规范文档」</span>
+                                <span class="activity-meta">30分钟前 · David Zhang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 团队成员 -->
+                <div class="card team-card">
+                    <div class="card-header">
+                        <h3>团队成员</h3>
+                        <span class="member-count">在线 6人</span>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: linear-gradient(135deg, #007AFF, #5856D6);">
+                                <span>A</span>
+                                <span class="status-indicator online"></span>
+                            </div>
+                            <span class="member-name">Alice</span>
+                            <span class="member-status">工作中</span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: linear-gradient(135deg, #34C759, #30D158);">
+                                <span>B</span>
+                                <span class="status-indicator online"></span>
+                            </div>
+                            <span class="member-name">Bob</span>
+                            <span class="member-status">会议中</span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: linear-gradient(135deg, #FF9500, #FF6B00);">
+                                <span>C</span>
+                                <span class="status-indicator away"></span>
+                            </div>
+                            <span class="member-name">Carol</span>
+                            <span class="member-status">离开</span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: linear-gradient(135deg, #FF2D55, #FF375F);">
+                                <span>D</span>
+                                <span class="status-indicator offline"></span>
+                            </div>
+                            <span class="member-name">David</span>
+                            <span class="member-status">离线</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 设置卡片 -->
+                <div class="card settings-card">
+                    <div class="card-header">
+                        <h3>快速设置</h3>
+                    </div>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 2C7.23858 2 5 4.23858 5 7V11L3 14H17L15 11V7C15 4.23858 12.7614 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <span>通知提醒</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M10 2V4M10 16V18M2 10H4M16 10H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                <span>深色模式</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M4 10C4 10 6.5 5 10 5C13.5 5 16 10 16 10C16 10 13.5 15 10 15C6.5 15 4 10 4 10Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="10" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <span>隐私保护</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 按钮展示 -->
+            <section class="button-showcase">
+                <h3>按钮样式</h3>
+                <div class="button-group">
+                    <button class="hm-btn primary">主要按钮</button>
+                    <button class="hm-btn secondary">次要按钮</button>
+                    <button class="hm-btn ghost">幽灵按钮</button>
+                    <button class="hm-btn text">文字按钮</button>
+                    <button class="hm-btn" disabled>禁用按钮</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

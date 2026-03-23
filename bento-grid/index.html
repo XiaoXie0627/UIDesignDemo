@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Grid DemoUI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 顶部导航 -->
+        <header class="top-nav">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">BentoDash</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="nav-link active">概览</a>
+                <a href="#" class="nav-link">分析</a>
+                <a href="#" class="nav-link">用户</a>
+                <a href="#" class="nav-link">设置</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <button class="icon-btn">🔔</button>
+                <div class="user-avatar">JD</div>
+            </div>
+        </header>
+
+        <!-- Bento Grid 布局 -->
+        <main class="bento-grid">
+            <!-- 欢迎卡片 -->
+            <div class="bento-card welcome-card">
+                <div class="welcome-content">
+                    <h1>早上好，John 👋</h1>
+                    <p>今天是美好的一天，让我们开始工作吧！</p>
+                </div>
+                <div class="welcome-decoration">
+                    <div class="deco-circle"></div>
+                    <div class="deco-circle small"></div>
+                </div>
+            </div>
+
+            <!-- 总收入 -->
+            <div class="bento-card stat-card income">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <span class="stat-label">总收入</span>
+                    <span class="stat-value">¥128,450</span>
+                    <span class="stat-change positive">↑ 12.5%</span>
+                </div>
+            </div>
+
+            <!-- 活跃用户 -->
+            <div class="bento-card stat-card users">
+                <div class="stat-icon">👥</div>
+                <div class="stat-content">
+                    <span class="stat-label">活跃用户</span>
+                    <span class="stat-value">24,521</span>
+                    <span class="stat-change positive">↑ 8.2%</span>
+                </div>
+            </div>
+
+            <!-- 订单数量 -->
+            <div class="bento-card stat-card orders">
+                <div class="stat-icon">📦</div>
+                <div class="stat-content">
+                    <span class="stat-label">订单数量</span>
+                    <span class="stat-value">1,845</span>
+                    <span class="stat-change negative">↓ 2.4%</span>
+                </div>
+            </div>
+
+            <!-- 满意度 -->
+            <div class="bento-card stat-card satisfaction">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                    <span class="stat-label">满意度</span>
+                    <span class="stat-value">94.2%</span>
+                    <span class="stat-change positive">↑ 1.8%</span>
+                </div>
+            </div>
+
+            <!-- 图表卡片 -->
+            <div class="bento-card chart-card large">
+                <div class="card-header">
+                    <h3>销售趋势</h3>
+                    <div class="tabs">
+                        <button class="tab active">周</button>
+                        <button class="tab">月</button>
+                        <button class="tab">年</button>
+                    </div>
+                </div>
+                <div class="chart-area">
+                    <div class="chart-bars">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 60%"></div>
+                            <span>Mon</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 80%"></div>
+                            <span>Tue</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 45%"></div>
+                            <span>Wed</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 90%"></div>
+                            <span>Thu</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 70%"></div>
+                            <span>Fri</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 55%"></div>
+                            <span>Sat</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 85%"></div>
+                            <span>Sun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 团队成员 -->
+            <div class="bento-card team-card">
+                <div class="card-header">
+                    <h3>团队成员</h3>
+                    <button class="btn-text">查看全部</button>
+                </div>
+                <div class="team-list">
+                    <div class="team-member">
+                        <div class="member-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">A</div>
+                        <div class="member-info">
+                            <span class="member-name">Alice Chen</span>
+                            <span class="member-role">设计师</span>
+                        </div>
+                        <span class="status-dot online"></span>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">B</div>
+                        <div class="member-info">
+                            <span class="member-name">Bob Wang</span>
+                            <span class="member-role">开发者</span>
+                        </div>
+                        <span class="status-dot online"></span>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">C</div>
+                        <div class="member-info">
+                            <span class="member-name">Carol Li</span>
+                            <span class="member-role">产品经理</span>
+                        </div>
+                        <span class="status-dot offline"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 最近订单 -->
+            <div class="bento-card orders-card wide">
+                <div class="card-header">
+                    <h3>最近订单</h3>
+                    <select class="filter-select">
+                        <option>全部</option>
+                        <option>待处理</option>
+                        <option>已完成</option>
+                    </select>
+                </div>
+                <div class="orders-table">
+                    <div class="table-row header">
+                        <span>订单号</span>
+                        <span>客户</span>
+                        <span>金额</span>
+                        <span>状态</span>
+                        <span>操作</span>
+                    </div>
+                    <div class="table-row">
+                        <span>#ORD-001</span>
+                        <span>张三</span>
+                        <span>¥2,450</span>
+                        <span class="status-badge success">已完成</span>
+                        <button class="btn-small">查看</button>
+                    </div>
+                    <div class="table-row">
+                        <span>#ORD-002</span>
+                        <span>李四</span>
+                        <span>¥1,890</span>
+                        <span class="status-badge warning">处理中</span>
+                        <button class="btn-small">查看</button>
+                    </div>
+                    <div class="table-row">
+                        <span>#ORD-003</span>
+                        <span>王五</span>
+                        <span>¥3,200</span>
+                        <span class="status-badge danger">待付款</span>
+                        <button class="btn-small">查看</button>
+                    </div>
+                    <div class="table-row">
+                        <span>#ORD-004</span>
+                        <span>赵六</span>
+                        <span>¥980</span>
+                        <span class="status-badge success">已完成</span>
+                        <button class="btn-small">查看</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快捷操作 -->
+            <div class="bento-card actions-card">
+                <div class="card-header">
+                    <h3>快捷操作</h3>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn">
+                        <span class="action-icon">➕</span>
+                        <span>新建</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="action-icon">📤</span>
+                        <span>导出</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="action-icon">📊</span>
+                        <span>报告</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="action-icon">⚙️</span>
+                        <span>设置</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 进度卡片 -->
+            <div class="bento-card progress-card">
+                <div class="card-header">
+                    <h3>项目进度</h3>
+                </div>
+                <div class="progress-list">
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="project-name">网站重构</span>
+                            <span class="progress-percent">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="project-name">App开发</span>
+                            <span class="progress-percent">45%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill warning" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span class="project-name">数据分析</span>
+                            <span class="progress-percent">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill danger" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 日历卡片 -->
+            <div class="bento-card calendar-card">
+                <div class="card-header">
+                    <h3>今日日程</h3>
+                </div>
+                <div class="schedule-list">
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:00</div>
+                        <div class="schedule-content">
+                            <span class="schedule-title">团队晨会</span>
+                            <span class="schedule-location">会议室 A</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:00</div>
+                        <div class="schedule-content">
+                            <span class="schedule-title">产品评审</span>
+                            <span class="schedule-location">线上会议</span>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">16:30</div>
+                        <div class="schedule-content">
+                            <span class="schedule-title">客户沟通</span>
+                            <span class="schedule-location">会议室 B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 表单卡片 -->
+            <div class="bento-card form-card">
+                <div class="card-header">
+                    <h3>快速设置</h3>
+                </div>
+                <form class="settings-form">
+                    <div class="form-row">
+                        <label>通知设置</label>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>深色模式</label>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>自动保存</label>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">保存设置</button>
+                </form>
+            </div>
+
+            <!-- 存储使用 -->
+            <div class="bento-card storage-card">
+                <div class="card-header">
+                    <h3>存储空间</h3>
+                </div>
+                <div class="storage-info">
+                    <div class="storage-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="storage-bg" cx="50" cy="50" r="45"/>
+                            <circle class="storage-fill" cx="50" cy="50" r="45" style="stroke-dashoffset: 94.2"/>
+                        </svg>
+                        <div class="storage-text">
+                            <span class="storage-used">68%</span>
+                            <span class="storage-label">已使用</span>
+                        </div>
+                    </div>
+                    <div class="storage-details">
+                        <div class="storage-item">
+                            <span class="color-dot" style="background: #667eea"></span>
+                            <span>文档</span>
+                            <span>2.4 GB</span>
+                        </div>
+                        <div class="storage-item">
+                            <span class="color-dot" style="background: #f093fb"></span>
+                            <span>图片</span>
+                            <span>1.8 GB</span>
+                        </div>
+                        <div class="storage-item">
+                            <span class="color-dot" style="background: #4facfe"></span>
+                            <span>视频</span>
+                            <span>2.6 GB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 按钮展示 -->
+        <section class="button-showcase">
+            <h3>按钮样式</h3>
+            <div class="button-grid">
+                <button class="btn-primary">主要按钮</button>
+                <button class="btn-secondary">次要按钮</button>
+                <button class="btn-danger">危险按钮</button>
+                <button class="btn-success">成功按钮</button>
+                <button class="btn-outline">边框按钮</button>
+                <button class="btn-disabled" disabled>禁用按钮</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
