@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Design - Material Design 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 导航抽屉 -->
+        <aside class="nav-drawer">
+            <div class="nav-drawer-header">
+                <div class="logo">
+                    <span class="material-icons logo-icon">dashboard</span>
+                    <span class="logo-text">MaterialUI</span>
+                </div>
+            </div>
+
+            <nav class="nav-drawer-content">
+                <div class="nav-section">
+                    <span class="nav-section-title">主要功能</span>
+                    <a href="#" class="nav-item active">
+                        <span class="material-icons">home</span>
+                        <span>首页</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="material-icons">analytics</span>
+                        <span>数据分析</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="material-icons">people</span>
+                        <span>用户管理</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="material-icons">shopping_cart</span>
+                        <span>订单管理</span>
+                        <span class="nav-badge">128</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">系统</span>
+                    <a href="#" class="nav-item">
+                        <span class="material-icons">settings</span>
+                        <span>系统设置</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="material-icons">notifications</span>
+                        <span>消息通知</span>
+                        <span class="nav-badge error">5</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="nav-drawer-footer">
+                <div class="user-card">
+                    <div class="user-avatar">
+                        <span>JD</span>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">John Doe</span>
+                        <span class="user-email">john@example.com</span>
+                    </div>
+                    <button class="icon-btn">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 顶部应用栏 -->
+            <header class="top-app-bar">
+                <div class="top-app-bar-left">
+                    <button class="icon-btn menu-btn">
+                        <span class="material-icons">menu</span>
+                    </button>
+                    <h1 class="page-title">仪表盘</h1>
+                </div>
+                <div class="top-app-bar-right">
+                    <div class="search-bar">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="搜索...">
+                    </div>
+                    <button class="icon-btn">
+                        <span class="material-icons">notifications</span>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="icon-btn">
+                        <span class="material-icons">dark_mode</span>
+                    </button>
+                    <div class="user-avatar-small">JD</div>
+                </div>
+            </header>
+
+            <!-- 欢迎区域 -->
+            <section class="welcome-section">
+                <div class="welcome-card elevated-card">
+                    <div class="welcome-content">
+                        <h2 class="display-small">早上好，John 👋</h2>
+                        <p class="body-large">欢迎回来！今天有 <strong>12</strong> 个新订单需要处理</p>
+                    </div>
+                    <div class="welcome-actions">
+                        <button class="md-btn filled-btn">
+                            <span class="material-icons">add</span>
+                            新建订单
+                        </button>
+                        <button class="md-btn tonal-btn">
+                            <span class="material-icons">assessment</span>
+                            查看报告
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 统计卡片 -->
+            <section class="stats-section">
+                <div class="stat-card elevated-card">
+                    <div class="stat-card-header">
+                        <div class="stat-icon primary">
+                            <span class="material-icons">payments</span>
+                        </div>
+                        <span class="stat-trend up">
+                            <span class="material-icons">trending_up</span>
+                            +12.5%
+                        </span>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stat-value headline-medium">¥128,450</span>
+                        <span class="stat-label body-medium">总收入</span>
+                    </div>
+                    <div class="stat-chart">
+                        <svg width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none">
+                            <path d="M0 30 Q15 25, 30 28 T60 20 T90 15 T120 10" stroke="url(#stat-grad-1)" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="stat-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="var(--md-primary)"/>
+                                    <stop offset="100%" stop-color="var(--md-secondary)"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-card elevated-card">
+                    <div class="stat-card-header">
+                        <div class="stat-icon secondary">
+                            <span class="material-icons">people</span>
+                        </div>
+                        <span class="stat-trend up">
+                            <span class="material-icons">trending_up</span>
+                            +8.2%
+                        </span>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stat-value headline-medium">24,521</span>
+                        <span class="stat-label body-medium">活跃用户</span>
+                    </div>
+                    <div class="stat-chart">
+                        <svg width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none">
+                            <path d="M0 25 Q20 22, 40 18 T80 12 T120 8" stroke="url(#stat-grad-2)" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="stat-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="var(--md-secondary)"/>
+                                    <stop offset="100%" stop-color="var(--md-tertiary)"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-card elevated-card">
+                    <div class="stat-card-header">
+                        <div class="stat-icon tertiary">
+                            <span class="material-icons">shopping_bag</span>
+                        </div>
+                        <span class="stat-trend down">
+                            <span class="material-icons">trending_down</span>
+                            -2.4%
+                        </span>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stat-value headline-medium">1,845</span>
+                        <span class="stat-label body-medium">订单数量</span>
+                    </div>
+                    <div class="stat-chart">
+                        <svg width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none">
+                            <path d="M0 15 Q25 18, 50 22 T100 28 T120 30" stroke="url(#stat-grad-3)" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="stat-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="var(--md-tertiary)"/>
+                                    <stop offset="100%" stop-color="var(--md-error)"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-card elevated-card">
+                    <div class="stat-card-header">
+                        <div class="stat-icon error">
+                            <span class="material-icons">favorite</span>
+                        </div>
+                        <span class="stat-trend up">
+                            <span class="material-icons">trending_up</span>
+                            +1.8%
+                        </span>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stat-value headline-medium">94.2%</span>
+                        <span class="stat-label body-medium">满意度</span>
+                    </div>
+                    <div class="stat-progress">
+                        <div class="progress-ring">
+                            <svg width="50" height="50" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" stroke="var(--md-surface-variant)" stroke-width="4" fill="none"/>
+                                <circle cx="25" cy="25" r="20" stroke="var(--md-primary)" stroke-width="4" fill="none" 
+                                    stroke-dasharray="125.6" stroke-dashoffset="10" stroke-linecap="round" transform="rotate(-90 25 25)"/>
+                            </svg>
+                            <span class="progress-value label-large">94%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 主要内容区 -->
+            <section class="content-section">
+                <!-- 数据表格 -->
+                <div class="card elevated-card table-card">
+                    <div class="card-header">
+                        <h3 class="title-large">最近订单</h3>
+                        <div class="card-actions">
+                            <div class="md-select">
+                                <select>
+                                    <option>全部状态</option>
+                                    <option>待处理</option>
+                                    <option>处理中</option>
+                                    <option>已完成</option>
+                                </select>
+                                <span class="material-icons">arrow_drop_down</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="md-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="md-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkbox-mark"></span>
+                                        </label>
+                                    </th>
+                                    <th>订单号</th>
+                                    <th>客户</th>
+                                    <th>金额</th>
+                                    <th>状态</th>
+                                    <th>时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label class="md-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkbox-mark"></span>
+                                        </label>
+                                    </td>
+                                    <td><span class="order-id">#ORD-001</span></td>
+                                    <td>
+                                        <div class="customer-cell">
+                                            <div class="customer-avatar primary">张</div>
+                                            <div class="customer-info">
+                                                <span class="customer-name">张三</span>
+                                                <span class="customer-email">zhangsan@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="amount">¥2,450</span></td>
+                                    <td><span class="md-chip success">已完成</span></td>
+                                    <td><span class="time-text">5分钟前</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="icon-btn-small" title="查看">
+                                                <span class="material-icons">visibility</span>
+                                            </button>
+                                            <button class="icon-btn-small" title="编辑">
+                                                <span class="material-icons">edit</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="md-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkbox-mark"></span>
+                                        </label>
+                                    </td>
+                                    <td><span class="order-id">#ORD-002</span></td>
+                                    <td>
+                                        <div class="customer-cell">
+                                            <div class="customer-avatar secondary">李</div>
+                                            <div class="customer-info">
+                                                <span class="customer-name">李四</span>
+                                                <span class="customer-email">lisi@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="amount">¥1,890</span></td>
+                                    <td><span class="md-chip warning">处理中</span></td>
+                                    <td><span class="time-text">15分钟前</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="icon-btn-small" title="查看">
+                                                <span class="material-icons">visibility</span>
+                                            </button>
+                                            <button class="icon-btn-small" title="编辑">
+                                                <span class="material-icons">edit</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="md-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkbox-mark"></span>
+                                        </label>
+                                    </td>
+                                    <td><span class="order-id">#ORD-003</span></td>
+                                    <td>
+                                        <div class="customer-cell">
+                                            <div class="customer-avatar tertiary">王</div>
+                                            <div class="customer-info">
+                                                <span class="customer-name">王五</span>
+                                                <span class="customer-email">wangwu@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="amount">¥3,200</span></td>
+                                    <td><span class="md-chip error">待付款</span></td>
+                                    <td><span class="time-text">30分钟前</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="icon-btn-small" title="查看">
+                                                <span class="material-icons">visibility</span>
+                                            </button>
+                                            <button class="icon-btn-small" title="编辑">
+                                                <span class="material-icons">edit</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="md-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkbox-mark"></span>
+                                        </label>
+                                    </td>
+                                    <td><span class="order-id">#ORD-004</span></td>
+                                    <td>
+                                        <div class="customer-cell">
+                                            <div class="customer-avatar primary">赵</div>
+                                            <div class="customer-info">
+                                                <span class="customer-name">赵六</span>
+                                                <span class="customer-email">zhaoliu@email.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="amount">¥980</span></td>
+                                    <td><span class="md-chip success">已完成</span></td>
+                                    <td><span class="time-text">1小时前</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="icon-btn-small" title="查看">
+                                                <span class="material-icons">visibility</span>
+                                            </button>
+                                            <button class="icon-btn-small" title="编辑">
+                                                <span class="material-icons">edit</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <span class="pagination-info body-small">显示 1-4 共 1,845 条</span>
+                        <div class="pagination">
+                            <button class="icon-btn-small" disabled>
+                                <span class="material-icons">chevron_left</span>
+                            </button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span class="page-dots">...</span>
+                            <button class="page-btn">462</button>
+                            <button class="icon-btn-small">
+                                <span class="material-icons">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图表区域 -->
+                <div class="card elevated-card chart-card">
+                    <div class="card-header">
+                        <h3 class="title-large">销售趋势</h3>
+                        <div class="card-actions">
+                            <div class="md-segmented-btn">
+                                <button class="segment-btn active">周</button>
+                                <button class="segment-btn">月</button>
+                                <button class="segment-btn">年</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot primary"></span>
+                                <span class="body-small">本月</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot outline"></span>
+                                <span class="body-small">上月</span>
+                            </div>
+                        </div>
+                        <div class="chart-area">
+                            <div class="chart-bars">
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 65%;" data-value="¥52,000">
+                                        <div class="bar-value label-small">¥52k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 50%;"></div>
+                                    <span class="bar-label label-small">Mon</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 85%;" data-value="¥68,000">
+                                        <div class="bar-value label-small">¥68k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 65%;"></div>
+                                    <span class="bar-label label-small">Tue</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 45%;" data-value="¥36,000">
+                                        <div class="bar-value label-small">¥36k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 55%;"></div>
+                                    <span class="bar-label label-small">Wed</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 95%;" data-value="¥76,000">
+                                        <div class="bar-value label-small">¥76k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 75%;"></div>
+                                    <span class="bar-label label-small">Thu</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 75%;" data-value="¥60,000">
+                                        <div class="bar-value label-small">¥60k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 70%;"></div>
+                                    <span class="bar-label label-small">Fri</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 55%;" data-value="¥44,000">
+                                        <div class="bar-value label-small">¥44k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 50%;"></div>
+                                    <span class="bar-label label-small">Sat</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar current" style="height: 80%;" data-value="¥64,000">
+                                        <div class="bar-value label-small">¥64k</div>
+                                    </div>
+                                    <div class="bar previous" style="height: 60%;"></div>
+                                    <span class="bar-label label-small">Sun</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 团队成员 -->
+                <div class="card elevated-card team-card">
+                    <div class="card-header">
+                        <h3 class="title-large">团队成员</h3>
+                        <button class="md-btn text-btn">
+                            查看全部
+                            <span class="material-icons">arrow_forward</span>
+                        </button>
+                    </div>
+                    <div class="team-list">
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: var(--md-primary);">
+                                <span>A</span>
+                                <span class="status-indicator online"></span>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name title-small">Alice Chen</span>
+                                <span class="member-role body-small">UI设计师</span>
+                            </div>
+                            <span class="md-chip tonal">工作中</span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: var(--md-secondary);">
+                                <span>B</span>
+                                <span class="status-indicator online"></span>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name title-small">Bob Wang</span>
+                                <span class="member-role body-small">前端开发</span>
+                            </div>
+                            <span class="md-chip tonal">会议中</span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: var(--md-tertiary);">
+                                <span>C</span>
+                                <span class="status-indicator away"></span>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name title-small">Carol Li</span>
+                                <span class="member-role body-small">产品经理</span>
+                            </div>
+                            <span class="md-chip outlined">离开</span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: var(--md-error);">
+                                <span>D</span>
+                                <span class="status-indicator offline"></span>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name title-small">David Zhang</span>
+                                <span class="member-role body-small">后端开发</span>
+                            </div>
+                            <span class="md-chip outlined">离线</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快捷操作 -->
+                <div class="card elevated-card actions-card">
+                    <div class="card-header">
+                        <h3 class="title-large">快捷操作</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn">
+                            <span class="material-icons">add_circle</span>
+                            <span class="label-medium">新建订单</span>
+                        </button>
+                        <button class="quick-action-btn">
+                            <span class="material-icons">file_download</span>
+                            <span class="label-medium">导出数据</span>
+                        </button>
+                        <button class="quick-action-btn">
+                            <span class="material-icons">assessment</span>
+                            <span class="label-medium">生成报告</span>
+                        </button>
+                        <button class="quick-action-btn">
+                            <span class="material-icons">settings</span>
+                            <span class="label-medium">系统设置</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 表单组件 -->
+                <div class="card elevated-card form-card">
+                    <div class="card-header">
+                        <h3 class="title-large">表单组件</h3>
+                    </div>
+                    <form class="md-form">
+                        <div class="form-group">
+                            <div class="md-text-field filled">
+                                <input type="text" id="username" placeholder=" ">
+                                <label for="username">用户名</label>
+                                <span class="field-trailing">
+                                    <span class="material-icons">person</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="md-text-field outlined">
+                                <input type="email" id="email" placeholder=" ">
+                                <label for="email">邮箱地址</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="md-select-field">
+                                <select id="role">
+                                    <option value="">选择角色</option>
+                                    <option value="admin">管理员</option>
+                                    <option value="editor">编辑</option>
+                                    <option value="viewer">访客</option>
+                                </select>
+                                <label for="role">角色</label>
+                                <span class="material-icons">arrow_drop_down</span>
+                            </div>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="md-checkbox">
+                                <input type="checkbox" checked>
+                                <span class="checkbox-mark"></span>
+                                <span class="checkbox-label">接收邮件通知</span>
+                            </label>
+                            <label class="md-switch">
+                                <input type="checkbox">
+                                <span class="switch-track"></span>
+                                <span class="switch-label">夜间模式</span>
+                            </label>
+                        </div>
+                        <div class="form-group radio-group">
+                            <label class="md-radio">
+                                <input type="radio" name="theme" value="light" checked>
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">浅色主题</span>
+                            </label>
+                            <label class="md-radio">
+                                <input type="radio" name="theme" value="dark">
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">深色主题</span>
+                            </label>
+                            <label class="md-radio">
+                                <input type="radio" name="theme" value="auto">
+                                <span class="radio-mark"></span>
+                                <span class="radio-label">跟随系统</span>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="md-btn outlined-btn">取消</button>
+                            <button type="submit" class="md-btn filled-btn">保存设置</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 按钮展示区 -->
+            <section class="button-showcase">
+                <h3 class="title-large">按钮样式</h3>
+                <div class="button-grid">
+                    <button class="md-btn filled-btn">
+                        <span class="material-icons">add</span>
+                        Filled
+                    </button>
+                    <button class="md-btn tonal-btn">
+                        <span class="material-icons">edit</span>
+                        Tonal
+                    </button>
+                    <button class="md-btn outlined-btn">
+                        <span class="material-icons">delete</span>
+                        Outlined
+                    </button>
+                    <button class="md-btn text-btn">
+                        <span class="material-icons">share</span>
+                        Text
+                    </button>
+                    <button class="md-btn elevated-btn">
+                        <span class="material-icons">favorite</span>
+                        Elevated
+                    </button>
+                    <button class="md-btn filled-btn" disabled>
+                        <span class="material-icons">block</span>
+                        Disabled
+                    </button>
+                </div>
+                <div class="fab-grid">
+                    <button class="md-fab primary">
+                        <span class="material-icons">add</span>
+                    </button>
+                    <button class="md-fab secondary">
+                        <span class="material-icons">edit</span>
+                    </button>
+                    <button class="md-fab tertiary">
+                        <span class="material-icons">delete</span>
+                    </button>
+                    <button class="md-fab extended">
+                        <span class="material-icons">add</span>
+                        <span>新建</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Snackbar -->
+            <div class="md-snackbar" id="snackbar">
+                <span class="snackbar-text"></span>
+                <button class="snackbar-action">关闭</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

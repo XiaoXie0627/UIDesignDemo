@@ -1,12 +1,13 @@
 # UIUX设计风格深度提示词指南
 
-> 本文档包含5种精选UI设计风格的可复用提示词，可用于指导AI生成高质量的UI界面代码。
+> 本文档包含6种精选UI设计风格的可复用提示词，可用于指导AI生成高质量的UI界面代码。
 
 ---
 
 ## 一、Dark Mode Excellence（深色模式）
 
 ### 风格特点
+
 - 深灰而非纯黑的背景色（#121212 ~ #1a1a2e）
 - 略微去饱和的强调色
 - 高对比度但护眼的文本色
@@ -469,6 +470,169 @@
     ├── images/     # 图片
     └── fonts/      # 字体
 ```
+
+---
+
+## 六、Google Design（Material Design 3）
+
+### 风格特点
+- **动态色彩系统**：基于主色自动生成Primary/Secondary/Tertiary/Error完整色彩
+- **圆润设计语言**：大圆角（28px按钮、16px卡片、12px输入框）
+- **Surface层级系统**：5级表面（Surface 0-4），通过叠加色创建深度
+- **丰富组件库**：Filled/Tonal/Outlined/Elevated 4种按钮变体
+- **排版系统**：Display/Headline/Title/Body/Label 5级字体层次
+- **动效系统**：标准/加速/减速 3种缓动曲线
+
+### 可深入优化方向
+1. **动态颜色生成**：基于用户主色自动生成完整色彩方案
+2. **主题切换**：浅色/深色/跟随系统三种模式
+3. **Material You**：个性化颜色提取和应用
+4. **组件扩展**：Bottom Sheet、Dialog、Navigation Bar等
+5. **动效增强**：Shared Element Transitions、Container Transform
+
+### 完整提示词
+
+```
+请创建一个Google Material Design 3风格的管理界面，要求：
+
+【色彩系统 - Material You】
+- Primary: #6750A4（紫色）
+- On-Primary: #FFFFFF
+- Primary-Container: #EADDFF
+- Secondary: #625B71
+- Secondary-Container: #E8DEF8
+- Tertiary: #7D5260
+- Tertiary-Container: #FFD8E4
+- Error: #B3261E
+- Error-Container: #F9DEDC
+- Surface: #FFFBFE
+- Surface-Variant: #E7E0EC
+- On-Surface: #1C1B1F
+- On-Surface-Variant: #49454F
+- Outline: #79747E
+
+【圆角系统】
+- 按钮：28px (border-radius-full)
+- 卡片：16px (border-radius-lg)
+- 输入框：12px顶部圆角 (border-radius-xs顶部)
+- 图标按钮：50% (完全圆形)
+- FAB：16px (border-radius-lg) 或 28px (border-radius-xl) 扩展型
+
+【阴影系统 - Elevation】
+- Elevation 1: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15)
+- Elevation 2: 0 1px 2px rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15)
+- Elevation 3: 0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.3)
+- 卡片hover时阴影从Elevation 1升至Elevation 2
+
+【布局结构】
+- 左侧导航抽屉（280px），包含logo、分组导航菜单、用户卡片
+- 顶部应用栏（64px），包含菜单按钮、页面标题、搜索栏、通知、主题切换、用户头像
+- 欢迎卡片：渐变背景，显示问候语和快捷操作按钮
+- 统计卡片行（4列）：图标、数值、标签、趋势标签、迷你图表
+- 主内容区2:1网格：数据表格、图表、团队成员、快捷操作、表单
+
+【组件系统】
+1. 按钮（Button）：
+   - Filled Button：Primary背景，白色文字
+   - Tonal Button：Secondary-Container背景
+   - Outlined Button：透明背景，Outline边框
+   - Text Button：无背景无边框
+   - Elevated Button：Surface背景，阴影
+   - 禁用状态：12%透明度
+
+2. FAB（浮动操作按钮）：
+   - 56px圆形，Primary-Container背景
+   - Extended FAB：自适应宽度，28px圆角
+
+3. Chip（徽章）：
+   - 成功：绿色背景
+   - 警告：橙色背景
+   - 错误：Error-Container背景
+   - Tonal：Secondary-Container背景
+   - Outlined：透明背景+边框
+
+4. 复选框（Checkbox）：
+   - 18px方形，2px边框
+   - 选中状态：Primary背景+白色勾号
+
+5. 单选按钮（Radio）：
+   - 20px圆形，2px边框
+   - 选中状态：Primary边框+Primary圆点
+
+6. 开关（Switch）：
+   - 52x32px轨道，16px圆角
+   - 选中状态：Primary轨道+白色滑块
+
+7. 输入框（TextField）：
+   - Filled：底部边框，背景色
+   - Outlined：四周边框，透明背景
+   - 聚焦时边框变Primary色
+
+8. 表格（Table）：
+   - 表头背景：Surface-Container
+   - 行hover：Surface-Container背景
+   - 支持复选框选择
+
+9. Snackbar：
+   - Inverse-Surface背景
+   - 底部居中，圆角4px
+   - 支持操作按钮
+
+【排版系统】
+- Display Small: 36px, 400 weight, 44px line-height
+- Headline Medium: 28px, 400 weight, 36px line-height
+- Title Large: 22px, 500 weight, 28px line-height
+- Title Small: 14px, 500 weight, 20px line-height
+- Body Large: 16px, 400 weight, 24px line-height
+- Body Medium: 14px, 400 weight, 20px line-height
+- Body Small: 12px, 400 weight, 16px line-height
+- Label Large: 14px, 500 weight, 20px line-height
+- Label Medium: 12px, 500 weight, 16px line-height
+- Label Small: 11px, 500 weight, 16px line-height
+
+【动效系统】
+- 标准缓动：cubic-bezier(0.2, 0, 0, 1)
+- 强调缓动：cubic-bezier(0.2, 0, 0, 1)
+- 强调减速：cubic-bezier(0.05, 0.7, 0.1, 1)
+- 强调加速：cubic-bezier(0.3, 0, 0.8, 0.15)
+- 短时长：200ms
+- 中时长：400ms
+- 长时长：600ms
+
+【交互要求】
+- 按钮点击：涟漪效果（ripple animation）
+- 卡片hover：阴影加深
+- 表格行hover：背景色变化
+- 图表柱状图：悬停显示tooltip
+- Snackbar：3秒自动消失，可手动关闭
+- 统计卡片入场：依次淡入上移，间隔100ms
+
+【响应式】
+- 1200px以下：统计卡片2列，内容单列
+- 1024px以下：导航抽屉折叠为图标模式（80px）
+- 768px以下：导航抽屉隐藏，顶部栏堆叠
+```
+
+### Material Design 3 色彩工具推荐
+- **Material Theme Builder**: https://m3.material.io/theme-builder
+- **Material Symbols**: https://fonts.google.com/icons
+- **Material Design 3 官方文档**: https://m3.material.io
+
+### 组件清单
+| 组件 | 变体 | 说明 |
+|------|------|------|
+| Button | Filled/Tonal/Outlined/Text/Elevated | 5种按钮变体 |
+| FAB | Primary/Secondary/Tertiary/Extended | 浮动操作按钮 |
+| Card | Elevated/Filled/Outlined | 3种卡片变体 |
+| Chip | Assist/Filter/Input/Suggestion | 4种芯片类型 |
+| TextField | Filled/Outlined | 2种输入框 |
+| Checkbox | - | 复选框 |
+| Radio | - | 单选按钮 |
+| Switch | - | 开关 |
+| Snackbar | - | 消息提示 |
+| Dialog | - | 对话框 |
+| Bottom Sheet | - | 底部抽屉 |
+| Navigation | Drawer/Rail/Bar | 3种导航 |
 
 ---
 
