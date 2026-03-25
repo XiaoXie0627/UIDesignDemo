@@ -187,6 +187,167 @@ Surface 层级系统：
 - 背景色：对应 Container 色
 - Hover：Elevation 4
 
+【Icon Button 系统 - 圆形图标按钮】⭐ 实用
+
+> 谷歌网站常用的圆形功能按钮，适合工具栏、操作区、卡片操作等场景
+
+基础规格：
+- 尺寸：40x40px（标准触摸目标）
+- 图标尺寸：24x24px
+- 形状：完全圆形（border-radius: 50%）
+- 触摸热区：40px（含4px透明边距）
+
+4种变体：
+
+1. Standard Icon Button（标准图标按钮）：
+   - 背景：transparent
+   - 图标颜色：On-Surface-Variant
+   - Hover：背景 8% On-Surface-Variant
+   - 用途：通用功能按钮、导航按钮
+
+2. Filled Icon Button（填充图标按钮）：
+   - 背景：Primary
+   - 图标颜色：On-Primary
+   - Hover：box-shadow Elevation 1
+   - 用途：重要操作、强调按钮
+
+3. Tonal Icon Button（色调图标按钮）：
+   - 背景：Secondary-Container
+   - 图标颜色：On-Secondary-Container
+   - Hover：box-shadow Elevation 1
+   - 用途：次要操作、中等强调
+
+4. Outlined Icon Button（边框图标按钮）：
+   - 背景：transparent
+   - 边框：1px Outline
+   - 图标颜色：On-Surface-Variant
+   - Hover：背景 8% On-Surface-Variant
+   - 用途：需要边框区分的操作按钮
+
+HTML 结构示例：
+```html
+<!-- Standard Icon Button -->
+<button class="icon-btn">
+  <span class="material-symbols-outlined">edit</span>
+</button>
+
+<!-- Filled Icon Button -->
+<button class="icon-btn icon-btn-filled">
+  <span class="material-symbols-outlined">favorite</span>
+</button>
+
+<!-- Tonal Icon Button -->
+<button class="icon-btn icon-btn-tonal">
+  <span class="material-symbols-outlined">delete</span>
+</button>
+
+<!-- Outlined Icon Button -->
+<button class="icon-btn icon-btn-outlined">
+  <span class="material-symbols-outlined">settings</span>
+</button>
+```
+
+CSS 实现：
+```css
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-btn .material-symbols-outlined {
+  font-size: 24px;
+  color: var(--md-on-surface-variant);
+}
+
+.icon-btn:hover {
+  background: rgba(73, 69, 79, 0.08);
+}
+
+.icon-btn-filled {
+  background: var(--md-primary);
+}
+
+.icon-btn-filled .material-symbols-outlined {
+  color: var(--md-on-primary);
+}
+
+.icon-btn-filled:hover {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15);
+}
+
+.icon-btn-tonal {
+  background: var(--md-secondary-container);
+}
+
+.icon-btn-tonal .material-symbols-outlined {
+  color: var(--md-on-secondary-container);
+}
+
+.icon-btn-outlined {
+  border: 1px solid var(--md-outline);
+}
+
+.icon-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+```
+
+应用场景：
+- 顶部栏：菜单、搜索、通知、设置、用户头像
+- 表格操作列：查看、编辑、删除、更多
+- 卡片操作：收藏、分享、下载、关闭
+- 媒体控制：播放、暂停、上一曲、下一曲
+- 编辑器工具栏：加粗、斜体、下划线、链接
+
+状态变体：
+- Default：默认状态
+- Hover：鼠标悬停（背景变化）
+- Focused：焦点状态（outline: 2px Primary）
+- Pressed：按下状态（scale(0.95)）
+- Disabled：禁用状态（opacity: 0.38）
+
+带徽章的图标按钮：
+```html
+<button class="icon-btn">
+  <span class="material-symbols-outlined">notifications</span>
+  <span class="icon-badge">3</span>
+</button>
+```
+
+```css
+.icon-btn {
+  position: relative;
+}
+
+.icon-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--md-error);
+  color: var(--md-on-error);
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
 【Chip 系统】
 - 成功 Chip：rgba(52,199,89,0.12) 背景，#1B873B 文字
 - 警告 Chip：rgba(255,149,0,0.12) 背景，#9E6A03 文字
